@@ -39,6 +39,7 @@ Partial Class Form1
         Me.cantidad_lab = New System.Windows.Forms.Label()
         Me.FileDialog = New System.Windows.Forms.OpenFileDialog()
         Me.Cambiar_btn = New System.Windows.Forms.Button()
+        Me.id_txbox = New System.Windows.Forms.TextBox()
         CType(Me.DataGridView1, System.ComponentModel.ISupportInitialize).BeginInit()
         CType(Me.Imagen, System.ComponentModel.ISupportInitialize).BeginInit()
         Me.SuspendLayout()
@@ -186,11 +187,19 @@ Partial Class Form1
         Me.Cambiar_btn.Text = "Cambiar"
         Me.Cambiar_btn.UseVisualStyleBackColor = True
         '
+        'id_txbox
+        '
+        Me.id_txbox.Location = New System.Drawing.Point(272, 62)
+        Me.id_txbox.Name = "id_txbox"
+        Me.id_txbox.Size = New System.Drawing.Size(26, 20)
+        Me.id_txbox.TabIndex = 16
+        '
         'Form1
         '
         Me.AutoScaleDimensions = New System.Drawing.SizeF(6.0!, 13.0!)
         Me.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font
         Me.ClientSize = New System.Drawing.Size(525, 229)
+        Me.Controls.Add(Me.id_txbox)
         Me.Controls.Add(Me.Cambiar_btn)
         Me.Controls.Add(Me.cantidad_lab)
         Me.Controls.Add(Me.Nombre_lab)
@@ -233,4 +242,5 @@ Partial Class Form1
     Friend WithEvents cantidad_lab As Label
     Friend WithEvents FileDialog As OpenFileDialog
     Friend WithEvents Cambiar_btn As Button
+    Friend WithEvents id_txbox As TextBox
 End Class

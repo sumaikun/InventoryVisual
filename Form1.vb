@@ -11,7 +11,7 @@ Public Class Form1
 
     Private Sub Show_data()
         DataGridView1.Visible = True
-        DataGridView1.Columns(3).Visible = False
+        DataGridView1.Columns(4).Visible = False
         Imagen.Image = My.Resources.SIN_FOTO
         Imagen.SizeMode = PictureBoxSizeMode.StretchImage
         Codigo_lab.Visible = False
@@ -22,6 +22,8 @@ Public Class Form1
         Code_txbox.Enabled = True
         Name_txbox.Visible = False
         Storaged_txbox.Visible = False
+        id_txbox.Visible = False
+
 
         Guardar_btn.Visible = False
         QuitarImg_btn.Visible = True
@@ -45,16 +47,23 @@ Public Class Form1
         Console.WriteLine("Numero de filas " & Count.ToString)
     End Sub
 
-    Private Sub DataGridView1_CellContentClick(sender As Object, e As DataGridViewCellEventArgs) Handles DataGridView1.CellContentClick
-        Code_txbox.Text = DataGridView1.SelectedCells.Item(0).Value
-        Name_txbox.Text = DataGridView1.SelectedCells.Item(1).Value
-        Storaged_txbox.Text = DataGridView1.SelectedCells.Item(2).Value
+    Private Sub DataGridView1_CellClick(sender As Object, e As DataGridViewCellEventArgs) Handles DataGridView1.CellClick
+        id_txbox.Text = DataGridView1.SelectedCells.Item(0).Value
+        Code_txbox.Text = DataGridView1.SelectedCells.Item(1).Value
+        Name_txbox.Text = DataGridView1.SelectedCells.Item(2).Value
+        Storaged_txbox.Text = DataGridView1.SelectedCells.Item(3).Value
 
         Imagen.BackgroundImage = Nothing
-        Dim i() As Byte = DataGridView1.SelectedCells.Item(3).Value
-        Dim ms As New IO.MemoryStream(i)
-        Imagen.Image = Image.FromStream(ms)
-        Imagen.SizeMode = PictureBoxSizeMode.StretchImage
+        If IsDBNull(DataGridView1.SelectedCells.Item(4).Value) Then
+            Imagen.Image = My.Resources.SIN_FOTO
+            Imagen.SizeMode = PictureBoxSizeMode.StretchImage
+        Else
+            Dim i() As Byte = DataGridView1.SelectedCells.Item(4).Value
+            Dim ms As New IO.MemoryStream(i)
+            Imagen.Image = Image.FromStream(ms)
+            Imagen.SizeMode = PictureBoxSizeMode.StretchImage
+        End If
+
 
     End Sub
 

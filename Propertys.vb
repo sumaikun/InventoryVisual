@@ -2,6 +2,7 @@
     Private _code As String
     Private _name As String
     Private _storaged As Integer
+    Private _id As Integer
     Private _pic As Byte()
 
     Public Property code As String
@@ -40,4 +41,12 @@
         End Set
     End Property
 
+    Public Property id As Integer
+        Get
+            Return _id
+        End Get
+        Set(value As Integer)
+            _id = value
+        End Set
+    End Property
 End Class

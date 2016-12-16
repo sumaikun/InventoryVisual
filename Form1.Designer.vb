@@ -37,15 +37,19 @@ Partial Class Form1
         Me.Codigo_lab = New System.Windows.Forms.Label()
         Me.Nombre_lab = New System.Windows.Forms.Label()
         Me.cantidad_lab = New System.Windows.Forms.Label()
+        Me.FileDialog = New System.Windows.Forms.OpenFileDialog()
+        Me.Cambiar_btn = New System.Windows.Forms.Button()
         CType(Me.DataGridView1, System.ComponentModel.ISupportInitialize).BeginInit()
         CType(Me.Imagen, System.ComponentModel.ISupportInitialize).BeginInit()
         Me.SuspendLayout()
         '
         'DataGridView1
         '
+        Me.DataGridView1.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.AllCells
         Me.DataGridView1.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize
         Me.DataGridView1.Location = New System.Drawing.Point(12, 32)
         Me.DataGridView1.Name = "DataGridView1"
+        Me.DataGridView1.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect
         Me.DataGridView1.Size = New System.Drawing.Size(329, 149)
         Me.DataGridView1.TabIndex = 0
         '
@@ -169,11 +173,25 @@ Partial Class Form1
         Me.cantidad_lab.TabIndex = 14
         Me.cantidad_lab.Text = "Cantidad"
         '
+        'FileDialog
+        '
+        Me.FileDialog.FileName = "OpenFileDialog1"
+        '
+        'Cambiar_btn
+        '
+        Me.Cambiar_btn.Location = New System.Drawing.Point(12, 194)
+        Me.Cambiar_btn.Name = "Cambiar_btn"
+        Me.Cambiar_btn.Size = New System.Drawing.Size(75, 23)
+        Me.Cambiar_btn.TabIndex = 15
+        Me.Cambiar_btn.Text = "Cambiar"
+        Me.Cambiar_btn.UseVisualStyleBackColor = True
+        '
         'Form1
         '
         Me.AutoScaleDimensions = New System.Drawing.SizeF(6.0!, 13.0!)
         Me.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font
         Me.ClientSize = New System.Drawing.Size(525, 229)
+        Me.Controls.Add(Me.Cambiar_btn)
         Me.Controls.Add(Me.cantidad_lab)
         Me.Controls.Add(Me.Nombre_lab)
         Me.Controls.Add(Me.Codigo_lab)
@@ -213,4 +231,6 @@ Partial Class Form1
     Friend WithEvents Codigo_lab As Label
     Friend WithEvents Nombre_lab As Label
     Friend WithEvents cantidad_lab As Label
+    Friend WithEvents FileDialog As OpenFileDialog
+    Friend WithEvents Cambiar_btn As Button
 End Class

@@ -2,7 +2,7 @@
     Private _code As String
     Private _name As String
     Private _storaged As Integer
-    Private _pic As Byte
+    Private _pic As Byte()
 
     Public Property code As String
         Get
@@ -31,11 +31,11 @@
         End Set
     End Property
 
-    Public Property pic As Byte
+    Public Property pic As Byte()
         Get
             Return _pic
         End Get
-        Set(value As Byte)
+        Set(value As Byte())
             _pic = value
         End Set
     End Property

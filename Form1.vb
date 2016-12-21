@@ -12,6 +12,7 @@ Public Class Form1
     Private Sub Show_data()
         DataGridView1.Visible = True
         DataGridView1.Columns(4).Visible = False
+        DataGridView1.Columns(0).Visible = False
         Imagen.Image = My.Resources.SIN_FOTO
         Imagen.SizeMode = PictureBoxSizeMode.StretchImage
         Codigo_lab.Visible = False
@@ -68,24 +69,25 @@ Public Class Form1
     End Sub
 
     'cellpaintint me maneja los controles de las flechas del teclado'
-    'Private Sub DataGridView1_CellPainting(sender As Object, e As DataGridViewCellPaintingEventArgs) Handles DataGridView1.CellPainting
-    'If DataGridView1.Rows.Count = 1 Then
-    '       Code_txbox.Text = ""
-    '      Name_txbox.Text = ""
-    '     Storaged_txbox.Text = ""
-    'Exit Sub
-    'Else
-    '       Code_txbox.Text = DataGridView1.SelectedCells.Item(0).Value
-    '      Name_txbox.Text = DataGridView1.SelectedCells.Item(1).Value
-    '     Storaged_txbox.Text = DataGridView1.SelectedCells.Item(2).Value
-    '
-    '       Imagen.BackgroundImage = Nothing
-    'Dim i() As Byte = DataGridView1.SelectedCells.Item(3).Value
-    'Dim ms As New IO.MemoryStream(i)
-    '       Imagen.Image = Image.FromStream(ms)
-    '      Imagen.SizeMode = PictureBoxSizeMode.StretchImage
-    'End If
-    'End Sub
+    Private Sub DataGridView1_CellPainting(sender As Object, e As DataGridViewCellPaintingEventArgs) Handles DataGridView1.CellPainting
+        If DataGridView1.Rows.Count = 1 Then
+            Code_txbox.Text = ""
+            Name_txbox.Text = ""
+            Storaged_txbox.Text = ""
+            Exit Sub
+        Else
+            id_txbox.Text = DataGridView1.SelectedCells.Item(0).Value
+            Code_txbox.Text = DataGridView1.SelectedCells.Item(1).Value
+            Name_txbox.Text = DataGridView1.SelectedCells.Item(2).Value
+            Storaged_txbox.Text = DataGridView1.SelectedCells.Item(3).Value
+
+            Imagen.BackgroundImage = Nothing
+            Dim i() As Byte = DataGridView1.SelectedCells.Item(4).Value
+            Dim ms As New IO.MemoryStream(i)
+            Imagen.Image = Image.FromStream(ms)
+            Imagen.SizeMode = PictureBoxSizeMode.StretchImage
+        End If
+    End Sub
 
     Private Sub Nuevo_btn_Click(sender As Object, e As EventArgs) Handles Nuevo_btn.Click
         DataGridView1.Visible = False
@@ -189,6 +191,7 @@ Public Class Form1
     Private Sub Cambiar_Click(sender As Object, e As EventArgs) Handles Cambiar_btn.Click
         If Me.ValidateChildren = True And Code_txbox.Text <> "" And Name_txbox.Text <> "" And Storaged_txbox.Text <> "" Then
             Try
+                prop.id = id_txbox.Text
                 prop.code = Code_txbox.Text
                 prop.name = Name_txbox.Text
                 prop.storaged = Storaged_txbox.Text
@@ -258,4 +261,9 @@ Public Class Form1
         End If
     End Sub
 
+    Private Sub QuitarImg_btn_Click(sender As Object, e As EventArgs) Handles QuitarImg_btn.Click
+        Dim ms As New IO.MemoryStream()
+        Imagen.Image = My.Resources.SIN_FOTO
+        Imagen.Image.Save(MS, Imagen.Image.RawFormat)
+    End Sub
 End Class

@@ -37,6 +37,7 @@ Public Class Functions
             command.CommandType = CommandType.StoredProcedure
 
             With command.Parameters
+                .AddWithValue("@id", data.id)
                 .AddWithValue("@Code", data.code)
                 .AddWithValue("@Name", data.name)
                 .AddWithValue("@Storaged", data.storaged)
